@@ -8,7 +8,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "prodbuild": "ng build --prod --output-path /Users/MacioM/Desktop/prog/angular/myMoviesProduction/public/"
   },
   "private": true,
   "dependencies": {
@@ -24,6 +25,9 @@
     "bootstrap": "^4.0.0-alpha.6",
     "core-js": "^2.4.1",
     "font-awesome": "^4.7.0",
+    "ng2-toasty": "^4.0.3",
+    "ngx-bootstrap": "^1.9.3",
+    "ngx-facebook": "^2.4.0",
     "rxjs": "^5.4.2",
     "zone.js": "^0.8.14"
   },

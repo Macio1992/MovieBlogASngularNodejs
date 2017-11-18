@@ -1,0 +1,62 @@
+@import '../../theme/sass/general.scss';
+
+div.registerForm{
+	h1{
+		font-family: $slaboFont;
+		text-align: center;
+		font-weight: bold;
+	}
+	input[type=text], input[type=password], input[type=email] {
+		float: left;
+		clear: left;
+		padding: 10px;
+		margin-bottom: 10px;
+		outline: 0;
+		border: 0;
+		border-bottom: 1px solid $blackColor;
+		&.invalid{
+			border-bottom: 1px solid $orangeColor;
+		}
+		&::placeholder {
+			font-family: $slaboFont;
+			color: $blackColor;
+		}
+	}
+	div.submit{
+		float: left;
+		width: 100%;
+		clear: both;
+		display: flex;
+		justify-content: center;
+		input[type=submit]{
+			float: left;
+			clear: left;
+			padding: 8px;
+			outline: 0;
+			background: none;
+			border: 1px solid $orangeColor;
+			color: $orangeColor;
+			cursor: pointer;
+			&.invalid{
+				color: $blackColor;
+				cursor: default;
+			}
+		}
+	}
+	
+	div.error {
+		float: left;
+		margin-left: 20px;
+		padding: 10px 0;
+		font-family: $slaboFont;
+		span {
+			color: $orangeColor;
+		}
+	}
+}
+
+@media (min-width: 992px){
+	.modal-lg {
+		max-width: $modalWidth;
+	}
+}

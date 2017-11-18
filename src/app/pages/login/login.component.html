@@ -1,0 +1,48 @@
+<div bsModal #loginModal="bs-modal" class="modal fade"
+	[config]="{backdrop: 'static', keyboard: false}" tabindex="-1" role="dialog" 
+	aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-body">
+				<button type="button" class="close pull-right" aria-label="Close" (click)="hideChildModal()">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				
+				<div class="loginForm">
+					<ng2-toasty [position]="'bottom-right'"></ng2-toasty>
+					
+					<h1>logowanie</h1>
+					<form [formGroup]="loginForm" (ngSubmit)="login(loginForm.value)">
+						<input [ngClass]="{ invalid: !loginForm.controls['email'].valid && loginForm.controls['email'].dirty }" type="email" placeholder="email" formControlName="email">
+						<div class="error" *ngIf="loginForm.controls['email'].hasError('required') && loginForm.controls['email'].dirty">
+							<span>Wpisz e-mail.</span>
+						</div>
+						<div class="error" *ngIf="!loginForm.controls['email'].hasError('required') && loginForm.controls['email'].hasError('email')">
+							<span>Wpisz poprawny e-mail.</span>
+						</div>
+						<input [ngClass]="{ invalid: !loginForm.controls['password'].valid && loginForm.controls['password'].dirty }" type="password" placeholder="hasło" formControlName="password">
+						<div class="error" 
+							*ngIf="loginForm.controls['password'].hasError('required') && loginForm.controls['password'].dirty">
+							<span>Wpisz hasło</span>
+						</div>
+						<div class="error" 
+							*ngIf="!loginForm.controls['password'].hasError('required') && loginForm.controls['password'].hasError('minlength')">
+							<span>Hasło musi mieć długość min 4</span>
+						</div>
+						<div class="submit">
+							<input type="submit" value="zaloguj się" [disabled]="!loginForm.valid">
+						</div>
+					</form>
+					<div class="button">
+						<button class="facebook-button" (click)="loginWithFacebook()">Login with FB</button>
+					</div>
+					
+				</div>
+				
+				<!-- <button style="clear: both;" (click)="getProfile()">get profile</button>
+				<button style="clear: both;" (click)="getLoginStatus()">getLoginStatus</button> -->
+
+			</div>
+		</div>
+	</div>
+</div>

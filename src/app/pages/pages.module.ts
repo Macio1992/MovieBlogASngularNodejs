@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { routing } from './pages.routing';
 
 import { PagesComponent } from './pages.component';
+import { AuthGuard } from '../globals/auth.guard';
 
 @NgModule({
 	imports: [
@@ -12,7 +13,10 @@ import { PagesComponent } from './pages.component';
 		RouterModule
 	],
 	declarations: [
-		PagesComponent
+		PagesComponent,
+	],
+	providers: [
+		AuthGuard
 	]
 })
 

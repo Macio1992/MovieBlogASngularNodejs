@@ -1,0 +1,17 @@
+<div bsModal #singleModal = "bs-modal" class = "modal fade"
+[config] = "{backdrop: 'static', keyboard: false}" tabindex = "-1" role = "dialog" 
+aria-labelledby="mySmallModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-body">
+            <button type="button" class="close pull-right" aria-label="Close" (click)="hideChildModal()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            
+            <h1>{{ review.title }}</h1>
+            <h3>{{ review.Created_date | date: 'dd.MM.yyyy HH:mm' }}</h3>
+
+        </div>
+    </div>
+</div>
+</div>

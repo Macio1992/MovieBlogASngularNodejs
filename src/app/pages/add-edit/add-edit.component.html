@@ -1,0 +1,27 @@
+<div bsModal #addModal="bs-modal" class="modal fade"
+[config]="{backdrop: 'static', keyboard: false}" tabindex="-1" role="dialog" 
+aria-labelledby="mySmallModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-body">
+            <button type="button" class="close pull-right" aria-label="Close" (click)="hideChildModal()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+
+            <h1>{{ info }}</h1>
+            
+            <form [formGroup] = "addForm" (ngSubmit) = "action(addForm.value)">
+                
+                <input type="text" formControlName="title" placeholder="title" value="{{ review?.title }}">
+                <div *ngIf="!addForm.controls['title'].valid && addForm.controls['title'].touched" class="error">
+                    You need to put title
+                </div>
+            
+                <input type="submit" value="create review" [disabled] = "!addForm.valid">
+                
+            </form>
+            
+        </div>
+    </div>
+</div>
+</div>

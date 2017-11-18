@@ -1,11 +1,12 @@
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './home.component';
+import { ReviewSingleComponent } from './review-single.component';
 
 const routes: Routes = [
     {
         path: '',
-        component: HomeComponent
+        component: ReviewSingleComponent
     }
+    
 ];
 
 export const routing = RouterModule.forChild(routes);

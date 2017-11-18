@@ -1,0 +1,14 @@
+<h1>Reviews</h1>
+
+<ul>
+    <li *ngFor="let review of reviews">
+        <a [routerLink]="['/pages/review', review._id]">{{ review.title }}</a>
+        <button (click)="share(review._id)">
+            Share dialog
+        </button>
+        <button [routerLink]="['/pages/edit', review._id]">edit</button>
+    </li>
+    <button *ngIf="!isLastPage" (click)="showMore()">show more</button>
+
+    
+</ul>

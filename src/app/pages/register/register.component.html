@@ -1,0 +1,61 @@
+<div bsModal #registerModal="bs-modal" class="modal fade"
+[config]="{backdrop: 'static', keyboard: false}" tabindex="-1" role="dialog" 
+aria-labelledby="mySmallModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-body">
+            <button type="button" class="close pull-right" aria-label="Close" (click)="hideChildModal()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            
+            <div class="registerForm">
+                <h1>rejestracja</h1>
+                    
+                <form [formGroup]="registerForm" (ngSubmit)="register(registerForm.value)">
+                    <input [ngClass]="{ invalid: !registerForm.controls['fullName'].valid && registerForm.controls['fullName'].dirty }" type="text" placeholder="imię i nazwisko" formControlName="fullName">
+                    <div class="error" *ngIf="registerForm.controls['fullName'].hasError('required') && registerForm.controls['fullName'].dirty">
+                        <span>Wpisz imię i nazwisko</span>
+                    </div>
+                    <div class="error" 
+                        *ngIf="!registerForm.controls['fullName'].hasError('required') && registerForm.controls['fullName'].hasError('minlength')">
+                        <span>Nazwa musi mieć długość min 5</span>
+                    </div>
+                    <input [ngClass]="{ invalid: !registerForm.controls['email'].valid && registerForm.controls['email'].dirty }" type="email" placeholder="email" formControlName="email">
+                    <div class="error" *ngIf="registerForm.controls['email'].hasError('required') && registerForm.controls['email'].dirty">
+                        <span>wpisz e-mail.</span>
+                    </div>
+                    <div class="error" *ngIf="registerForm.controls['email'].hasError('email') && !registerForm.controls['email'].hasError('required')">
+                        <span>wpisz poprawny e-mail.</span>
+                    </div>
+
+                    <div formGroupName="passwords" class="passwords">
+                        <input [ngClass]="{ invalid: !registerForm.get('passwords').get('password').valid && registerForm.get('passwords').get('password').dirty }" type="password" formControlName="password" placeholder="hasło">
+                        <div class="error" *ngIf="registerForm.get('passwords').get('password').hasError('required') && registerForm.get('passwords').get('password').dirty">
+                            <span>wpisz hasło</span>
+                        </div>
+                        <div class="error" 
+                            *ngIf="!registerForm.get('passwords').get('password').hasError('required') && registerForm.get('passwords').get('password').hasError('minlength')">
+                            <span>Hasło musi mieć długość min 4</span>
+                        </div>
+                        <input [ngClass]="{ invalid: !registerForm.get('passwords').get('repeatPassword').valid && registerForm.get('passwords').get('repeatPassword').dirty }" type="password" formControlName="repeatPassword" placeholder="powtórz hasło">
+                        <div class="error" *ngIf="registerForm.get('passwords').get('repeatPassword').hasError('required') && registerForm.get('passwords').get('repeatPassword').dirty">
+                            <span>wpisz hasło ponownie</span>
+                        </div>
+                        <div class="error" 
+                            *ngIf="!registerForm.get('passwords').get('repeatPassword').hasError('required') && registerForm.get('passwords').get('repeatPassword').hasError('minlength')">
+                            <span>Hasło musi mieć długość min 4</span>
+                        </div>
+                        <div class="error" *ngIf="!registerForm.get('passwords').valid && (registerForm.get('passwords').get('password').touched || registerForm.get('passwords').get('repeatPassword').touched)">
+                            <span >hasła są niezgodne</span>
+                        </div>
+                    </div>
+                    <div class="submit">
+                        <input [ngClass]="{ invalid: !registerForm.valid }" type="submit" value="zarejestruj się" [disabled]="!registerForm.valid">
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+</div>

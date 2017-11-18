@@ -1,10 +1,10 @@
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './home.component';
+import { AddEditComponent } from './add-edit.component';
 
 const routes: Routes = [
     {
         path: '',
-        component: HomeComponent
+        component: AddEditComponent
     }
 ];
 

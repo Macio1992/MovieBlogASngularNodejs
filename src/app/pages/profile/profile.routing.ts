@@ -1,11 +1,12 @@
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './home.component';
+import { ProfileComponent } from './profile.component';
 
 const routes: Routes = [
     {
         path: '',
-        component: HomeComponent
+        component: ProfileComponent
     }
+    
 ];
 
 export const routing = RouterModule.forChild(routes);
