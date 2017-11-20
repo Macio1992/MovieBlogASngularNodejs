@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ReviewService } from './review-single.service';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 import { Router, ActivatedRoute } from '@angular/router';
+import { url } from '../../globals/url';
 
 @Component({
     selector: 'review-single',
@@ -28,6 +29,7 @@ export class ReviewSingleComponent implements OnInit {
                     console.log('review');
                     console.dir(result);
                     this.review = result;
+                    this.review.image = url + '/file/' + this.review.image;
                 },
                 error => {
                     console.log('error');

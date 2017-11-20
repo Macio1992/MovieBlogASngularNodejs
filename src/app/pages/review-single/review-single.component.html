@@ -3,13 +3,15 @@
 aria-labelledby="mySmallModalLabel" aria-hidden="true">
 <div class="modal-dialog modal-lg">
     <div class="modal-content">
-        <div class="modal-body">
+        <div class="modal-body" id="review-single">
             <button type="button" class="close pull-right" aria-label="Close" (click)="hideChildModal()">
                 <span aria-hidden="true">&times;</span>
             </button>
             
-            <h1>{{ review.title }}</h1>
-            <h3>{{ review.Created_date | date: 'dd.MM.yyyy HH:mm' }}</h3>
+            <h4>{{ review.title }}</h4>
+            <img src="{{ review.image }}" alt="{{ review.image }}">
+            <p>{{ review.content }}</p>
+            <span>{{ review.Created_date | date: 'dd.MM.yyyy HH:mm' }}</span>
 
         </div>
     </div>

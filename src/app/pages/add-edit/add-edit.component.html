@@ -3,24 +3,42 @@
 aria-labelledby="mySmallModalLabel" aria-hidden="true">
 <div class="modal-dialog modal-lg">
     <div class="modal-content">
-        <div class="modal-body">
+        <div class="modal-body" id="add-edit">
             <button type="button" class="close pull-right" aria-label="Close" (click)="hideChildModal()">
                 <span aria-hidden="true">&times;</span>
             </button>
 
-            <h1>{{ info }}</h1>
+            <h4>{{ info }}</h4>
             
             <form [formGroup] = "addForm" (ngSubmit) = "action(addForm.value)">
                 
+                Add picture
+
+                <div id="file">
+                    <form>
+                        <input type="file" name="single" ng2FileSelect [uploader]="uploader" />                                  
+                    </form>
+
+                    <div *ngFor="let item of uploader.queue">
+                        <div class="progress" style="margin-bottom: 0;">
+                            <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': item.progress + '%' }"></div>
+                        </div>
+                         <button type="button" class="btn btn-success btn-xs"
+                                (click)="item.upload(); setUrl(item.file.name)" [disabled]="item.isReady || item.isUploading || item.isSuccess">
+                        Upload
+                        </button>
+                    </div>
+                </div>
+
                 <input type="text" formControlName="title" placeholder="title" value="{{ review?.title }}">
-                <div *ngIf="!addForm.controls['title'].valid && addForm.controls['title'].touched" class="error">
+                <div *ngIf="!addForm.controls['title'].valid && addForm.controls['title'].touched && !review?.title" class="error-info">
                     You need to put title
                 </div>
+                <textarea formControlName="content" name="content" id="content" value="{{ review?.content }}" placeholder="content"></textarea>
             
-                <input type="submit" value="create review" [disabled] = "!addForm.valid">
-                
+                <input [ngClass]="{ disabled: (!addForm.valid)}" type="submit" value="{{ buttonText }}" [disabled] = "!addForm.valid && !review?.title">
             </form>
-            
+            <button class="remove" *ngIf="type === 'edit'" (click)="delete(review?._id)">delete this review</button>
         </div>
     </div>
 </div>

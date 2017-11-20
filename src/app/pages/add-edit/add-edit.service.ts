@@ -39,4 +39,10 @@ export class AddEditService {
         .catch((error: any) => Observable.throw(error.json() || 'Server output'));
     }
 
+    deleteReview(id: string): Observable<any> {
+        return this.http.delete(`${url}/reviewSingle/${id}`)
+        .map((response: Response) => response.json())
+        .catch((error: any) => Observable.throw(error.json() || 'Server output'));
+    }
+
 }

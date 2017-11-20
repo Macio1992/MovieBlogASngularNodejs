@@ -1,6 +1,7 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { ReviewsService } from './reviews.service';
 import { FacebookService, InitParams, LoginResponse, LoginOptions, UIResponse, UIParams, FBVideoComponent } from 'ngx-facebook';
+import { url } from '../../globals/url';
 
 @Component({
     selector: 'reviews',
@@ -30,7 +31,14 @@ export class ReviewsComponent implements OnInit{
         this._service.getReviews(this.page).subscribe(
             result => {
                 this.reviews = result.reviews;
+                this.reviews.forEach(
+                    obj => {
+                        obj.image = url + '/file/' + obj.image;
+                    }
+                );
                 this.isLastPage = result.isLastPage;
+                console.log('result:');
+                console.dir(result);
             },
             error => {
                 console.log('error:');

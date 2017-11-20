@@ -1,0 +1,49 @@
+div#add-edit{
+    form{
+        overflow: hidden;
+        input[type=text], div.error-info, textarea, input[type=submit]{
+            float: left;
+            clear: both;
+            margin-top: 10px;
+            outline: 0;
+        }
+        input[type=text], textarea{
+            padding: 7px;
+        }
+        div.error-info{
+            color: red;
+        }
+        textarea{
+            width: 80%;
+            min-height: 300px;
+        }
+        input[type=submit]{
+            background: white;
+            border: 1px solid;
+            padding: 7px;
+            border-radius: 2px;
+            cursor: pointer;
+            &.disabled{
+                cursor: auto;
+            }
+        }
+        div#file{
+            div.progress{
+                margin-top: 10px;
+                margin-bottom: 10px !important;
+                width: 50%;
+            }
+        }
+    }
+    button.remove {
+        float: left;
+        margin-top: 10px;
+        background: red;
+        padding: 7px;
+        border: none;
+        color: white;
+        border-radius: 2px;
+        cursor: pointer;
+        outline: none;
+    }
+}

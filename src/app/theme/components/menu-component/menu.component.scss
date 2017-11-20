@@ -1,0 +1,27 @@
+div#menu{
+    ul{
+        padding: 0 0 0 ;
+        margin: 20px 0;
+        list-style: none;
+        width: 100%;
+        background: black;
+        li{
+            width: auto;
+            display: inline-block;
+            padding: 10px;
+            &:hover {
+                background-color: white;
+                &:hover{
+                    a{
+                        color: black;
+                    }
+                }
+            }
+            a{
+                text-decoration: none;
+                color: white;
+                font-size: 20px;
+            }
+        }
+    }
+}

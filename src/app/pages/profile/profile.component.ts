@@ -31,7 +31,7 @@ export class ProfileComponent implements OnInit {
 
     logout(): void {
         localStorage.removeItem('movieUserToken');
-        this._router.navigate(['/komunikat']);
+        this._router.navigate(['/pages/home']);
     }
 
 }

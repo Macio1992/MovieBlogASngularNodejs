@@ -5,6 +5,7 @@ import { routing } from './add-edit.routing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { ModalModule } from 'ngx-bootstrap';
+import { FileSelectDirective, FileDropDirective } from 'ng2-file-upload';
 
 @NgModule({
     imports: [
@@ -16,7 +17,8 @@ import { ModalModule } from 'ngx-bootstrap';
         ModalModule.forRoot()
     ],
     declarations: [
-        AddEditComponent
+        AddEditComponent,
+        FileSelectDirective
     ]
 })
 
