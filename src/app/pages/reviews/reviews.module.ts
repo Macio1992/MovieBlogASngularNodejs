@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { ReviewsComponent } from './reviews.component';
 import { routing } from './reviews.routing';
 import { HttpModule } from '@angular/http';
-// import { FileSelectDirective } from 'ng2-file-upload';
 import { FacebookModule } from 'ngx-facebook';
 
 @NgModule({
@@ -15,7 +14,6 @@ import { FacebookModule } from 'ngx-facebook';
     ],
     declarations: [
         ReviewsComponent,
-        // FileSelectDirective
     ],
     exports: [
         ReviewsComponent
