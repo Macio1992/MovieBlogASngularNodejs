@@ -33,12 +33,20 @@ export class ReviewsComponent implements OnInit{
                 this.reviews = result.reviews;
                 this.reviews.forEach(
                     obj => {
-                        obj.image = url + '/file/' + obj.image;
+                        if(obj.image)
+                            obj.image = url + '/file/' + obj.image;
+                        this._service.getCategory(obj.category).subscribe(
+                            category => {
+                                obj.category = category.name;
+                            },
+                            error => {
+                                console.log('error');
+                                console.dir(error);
+                            }
+                        );
                     }
                 );
                 this.isLastPage = result.isLastPage;
-                console.log('result:');
-                console.dir(result);
             },
             error => {
                 console.log('error:');
@@ -78,4 +86,18 @@ export class ReviewsComponent implements OnInit{
     private handleError(error) {
         console.error('Error processing action', error);
     }
+
+    // setCategory(id: string): string {
+    //     let cat: string = '';
+    //     this._service.getCategory(id).subscribe(
+    //         category => {
+    //             cat = category.name;
+    //         },
+    //         error => {
+    //             cat = 'error';
+    //         }
+    //     );
+
+    //     return cat;
+    // }
 }

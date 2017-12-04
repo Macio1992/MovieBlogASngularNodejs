@@ -5,7 +5,7 @@
                 <h4>
                     <a [routerLink]="['/pages/review', review._id]">{{ review.title }}</a>
                 </h4>
-                <img src="{{ review.image }}" alt="{{ review.image }}">
+                <img *ngIf="review.image" src="{{ review.image }}" alt="{{ review.image }}">
                 <button (click)="share(review._id)">
                     share dialog
                 </button>

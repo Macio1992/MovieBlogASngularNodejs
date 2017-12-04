@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { ModalModule } from 'ngx-bootstrap';
 import { FileUploadModule } from 'ng2-file-upload';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
     imports: [
@@ -15,7 +16,8 @@ import { FileUploadModule } from 'ng2-file-upload';
         ReactiveFormsModule,
         HttpModule,
         ModalModule.forRoot(),
-        FileUploadModule
+        FileUploadModule,
+        NgbModule.forRoot()
     ],
     declarations: [
         AddEditComponent,

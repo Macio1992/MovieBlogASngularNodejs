@@ -1,7 +1,10 @@
 <div class="container">
     <div class="row" id="menu">
-        <ul>
-            <li>
+        <ul *ngFor="let menu of menuItems">
+            <li *ngFor="let item of menu.children">
+                <menu-item [item]="item" [path] = "menu.path"></menu-item>
+            </li>
+            <!-- <li>
                 <a routerLink="/pages/home">home</a>
             </li>
             <li>
@@ -10,7 +13,7 @@
             <li><a routerLink="/pages/add">add</a></li>
             <li>
                 <a routerLink="/pages/profile">profile</a>
-            </li>
+            </li> -->
         </ul>
     </div>
 </div>

@@ -5,6 +5,7 @@ import { ModalDirective } from 'ngx-bootstrap/modal';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { FileUploader } from 'ng2-file-upload';
 import { url } from '../../globals/url';
+import { FormControl } from '@angular/forms/src/model';
 
 @Component({
     selector: 'add-edit',
@@ -22,17 +23,31 @@ export class AddEditComponent implements OnInit {
     review: any;
     buttonText: string = "";
     @ViewChild('addModal') public addModal: ModalDirective;
-    public uploader:FileUploader = new FileUploader({url: url + '/upload'});
+	public uploader:FileUploader = new FileUploader({url: url + '/upload'});
+	categories: any[];
 
     constructor(private _service: AddEditService, private fb: FormBuilder, private router: Router, private route: ActivatedRoute){
         this.addForm = fb.group({
             title: [null, Validators.required],
             content: [null],
-            image: [null]
+			image: [null],
+			category: [null]
         });
     }
 
     ngOnInit(): void {
+
+        this._service.getCategories().subscribe(
+			categories => {
+				console.log('cat:');
+				console.dir(categories);
+				this.categories = categories;
+			},
+			error => {
+				console.log('err');
+				console.dir(error);
+			}
+        );
 
         this.type = this.router.url.split('/')[2];
 
@@ -132,6 +147,13 @@ export class AddEditComponent implements OnInit {
     setUrl(name: string): void {
         let imageUrl = this.addForm.get('image');
         imageUrl.reset(name);
+        console.dir(this.addForm);
+    }
+
+    setCategory(id: string){
+        console.log('id: ' + id);
+        let cat = <FormControl>this.addForm.get('category');
+        cat.reset(id);
         console.dir(this.addForm);
     }
 

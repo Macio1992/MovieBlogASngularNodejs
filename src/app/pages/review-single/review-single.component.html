@@ -9,6 +9,7 @@ aria-labelledby="mySmallModalLabel" aria-hidden="true">
             </button>
             
             <h4>{{ review.title }}</h4>
+            <h3>category: {{ category }}</h3>
             <img src="{{ review.image }}" alt="{{ review.image }}">
             <p>{{ review.content }}</p>
             <span>{{ review.Created_date | date: 'dd.MM.yyyy HH:mm' }}</span>

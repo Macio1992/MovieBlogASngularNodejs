@@ -17,4 +17,10 @@ export class ReviewService {
         .catch((error: any) => Observable.throw(error.json() || 'Server output'));
     }
 
+    getCategory(id: string): Observable<any>{
+        return this.http.get(`${url}/categories/${id}`)
+        .map((response: Response) => response.json())
+        .catch((error: any) => Observable.throw(error.json() || 'Server output'));
+    }
+
 }

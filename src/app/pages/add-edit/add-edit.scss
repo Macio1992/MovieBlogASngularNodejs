@@ -1,6 +1,6 @@
 div#add-edit{
     form{
-        overflow: hidden;
+        // overflow: hidden;
         input[type=text], div.error-info, textarea, input[type=submit]{
             float: left;
             clear: both;
@@ -32,6 +32,12 @@ div#add-edit{
                 margin-top: 10px;
                 margin-bottom: 10px !important;
                 width: 50%;
+            }
+        }
+        div#dropdown {
+            clear: both;
+            div.nav-link, p.dropdown-item{
+                cursor: pointer;
             }
         }
     }

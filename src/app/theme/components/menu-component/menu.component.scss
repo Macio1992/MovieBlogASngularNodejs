@@ -11,17 +11,8 @@ div#menu{
             padding: 10px;
             &:hover {
                 background-color: white;
-                &:hover{
-                    a{
-                        color: black;
-                    }
-                }
             }
-            a{
-                text-decoration: none;
-                color: white;
-                font-size: 20px;
-            }
+            
         }
     }
 }

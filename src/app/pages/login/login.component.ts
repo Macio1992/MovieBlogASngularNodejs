@@ -7,6 +7,7 @@ import { URLSearchParams } from "@angular/http";
 import { Router } from '@angular/router';
 import { FacebookService, InitParams, LoginResponse} from 'ngx-facebook';
 import { ToastyService, ToastyConfig, ToastOptions, ToastData} from 'ng2-toasty';
+import { MenuService } from '../../theme';
 
 @Component({
     selector: 'login',
@@ -16,7 +17,7 @@ import { ToastyService, ToastyConfig, ToastOptions, ToastData} from 'ng2-toasty'
 		'./login.component.scss',
 		'../../../../node_modules/ng2-toasty/style-bootstrap.css'
 	],
-	providers: [ LoginService ]
+	providers: [ LoginService, MenuService ]
 })
 
 export class LoginComponent implements OnInit{
@@ -31,7 +32,8 @@ export class LoginComponent implements OnInit{
 		private router: Router,
 		private facebook: FacebookService,
 		private toastyService: ToastyService,
-		private toastyConfig: ToastyConfig
+		private toastyConfig: ToastyConfig,
+		private _menuService: MenuService
 	){
 		this.toastyConfig.theme = 'bootstrap';
 		this.loginForm = fb.group({
@@ -74,8 +76,8 @@ export class LoginComponent implements OnInit{
 
 		this._service.login(body).subscribe(
 			data => {
-				console.log('token:' + data.token);
 				localStorage.setItem('movieUserToken', JSON.stringify({ token: data.token, email: form.email }));
+				this._menuService.changeMenuFlag(true);
 				this.hideChildModal();
 			},
 			error => {

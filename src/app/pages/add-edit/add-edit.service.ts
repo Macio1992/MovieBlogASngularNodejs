@@ -45,4 +45,10 @@ export class AddEditService {
         .catch((error: any) => Observable.throw(error.json() || 'Server output'));
     }
 
+    getCategories(): Observable<any>{
+        return this.http.get(`${url}/categories`)
+        .map((response: Response) => response.json())
+        .catch((error: any) => Observable.throw(error.json() || 'Server output'));
+    }
+
 }

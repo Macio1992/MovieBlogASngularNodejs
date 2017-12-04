@@ -16,6 +16,7 @@ export class ReviewSingleComponent implements OnInit {
     sub: any;
     id: any;
     review: any;
+    category: string;
 
     @ViewChild('singleModal') public singleModal: ModalDirective;
 
@@ -26,10 +27,15 @@ export class ReviewSingleComponent implements OnInit {
             this.id = params.id;
             this.review = this._service.getReview(this.id).subscribe(
                 result => {
-                    console.log('review');
-                    console.dir(result);
                     this.review = result;
                     this.review.image = url + '/file/' + this.review.image;
+                    this._service.getCategory(this.review.category).subscribe(
+                        category => {
+                            this.category = category.name;
+                        },
+                        error => {
+                        }
+                    )
                 },
                 error => {
                     console.log('error');

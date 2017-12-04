@@ -36,6 +36,17 @@ aria-labelledby="mySmallModalLabel" aria-hidden="true">
                 </div>
                 <textarea formControlName="content" name="content" id="content" value="{{ review?.content }}" placeholder="content"></textarea>
             
+                <div id="dropdown">
+					<div ngbDropdown class="nav-item dropdown" >
+						<div ngbDropdownToggle class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Category
+						</div>
+						<div ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+						<p (click)="setCategory(category._id)" *ngFor="let category of categories" class="dropdown-item">{{ category.name }}</p>
+						</div>
+					</div>
+                </div>
+
                 <input [ngClass]="{ disabled: (!addForm.valid)}" type="submit" value="{{ buttonText }}" [disabled] = "!addForm.valid && !review?.title">
             </form>
             <button class="remove" *ngIf="type === 'edit'" (click)="delete(review?._id)">delete this review</button>
